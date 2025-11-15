@@ -22,6 +22,7 @@ Construir um sistema organizado e escalável enquanto revisa os pilares da lingu
 
 ## 📂 Estrutura inicial
 src/
+
 ├── main/java/
 
 └── test/java/
@@ -50,6 +51,7 @@ Develop an organized, scalable system while reviewing fundamentals, OOP, collect
 
 ### 📂 Initial structure
 src/
+
 ├── main/java/
 
 └── test/java/
