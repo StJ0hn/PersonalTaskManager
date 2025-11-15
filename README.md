@@ -23,4 +23,33 @@ Construir um sistema organizado e escalável enquanto revisa os pilares da lingu
 ## 📂 Estrutura inicial
 src/
 ├── main/java/
+
+└── test/java/
+
+---
+
+## 🇺🇸 About the Project
+A personal task manager built with **Java 21** and **Gradle**, designed to evolve as different Java topics are studied. Each stage adds new features, enabling practical, hands-on review of the language.
+
+### 🎯 Purpose
+Develop an organized, scalable system while reviewing fundamentals, OOP, collections, generics, exceptions, I/O, Streams, concurrency, SOLID, testing, and more.
+
+### 🚀 Features (expanding)
+- Basic task CRUD  
+- Priority, categories, and due dates  
+- File persistence  
+- Filters and reports with Streams  
+- Asynchronous services  
+- SOLID-based architecture  
+- Tests with JUnit and Mockito  
+
+### 🛠️ Technologies
+- Java 21  
+- Gradle  
+- JUnit 5  
+
+### 📂 Initial structure
+src/
+├── main/java/
+
 └── test/java/
