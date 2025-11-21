@@ -2,16 +2,21 @@ package repository;
 
 import model.Task;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 public interface TaskRepository {
 
-    // Salvar uma nova tarefa (gerar ID) ou atualiza uma existente.
+    // Save a new task (generate ID) or update a existent one
     public void save(Task task);
 
-    //Retornar todas as tarefas cadastradas
+    //Return all tasks
     public List<Task> findAll();
 
-    //Retornar tarefa por id
+    //Return task by ID
+    public Optional<Task> findById(Long id);
 
+    //Delete task by ID
+    public void deleteById(Long id);
 }
