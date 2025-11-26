@@ -3,6 +3,7 @@ package repository;
 import exception.TaskNotFoundException;
 import model.Task;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -27,14 +28,15 @@ public class InMemoryRepository implements TaskRepository{
     }
     @Override
     public List<Task> findAll(){
-
+        List<Task> allTasks = new ArrayList<>(database.values());
+        return allTasks;
     }
     @Override
-    public Optional<Task> findAllById(Long id){
-
+    public Optional<Task> findById(Long id){
+        return Optional.ofNullable(database.get(id));
     }
     @Override
     public void deleteById(Long id){
-
+        database.remove(id);
     }
 }
