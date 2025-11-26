@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface TaskRepository {
 
     // Save a new task (generate ID) or update a existent one
-    public void save(Task task);
+    public Task save(Task task);
 
     //Return all tasks
     public List<Task> findAll();
