@@ -78,8 +78,8 @@ class TaskServiceTest {
         //Assert
         //this result will be faile now, because resultOfService its null
         Assertions.assertNotNull(resultOfService,"List return wont should be null");
-        Assertions.assertNotEquals(2,resultOfService.size(), "should be return 2 tasks");
-        Assertions.assertNotEquals(falseListOfTasks,resultOfService,"the list returned should be indentic of a repository");
+        Assertions.assertEquals(2,resultOfService.size(), "should be return 2 tasks");
+        Assertions.assertEquals(falseListOfTasks,resultOfService,"the list returned should be indentic of a repository");
 
         //extra verify of comportament
         // to ensure service call repository one time

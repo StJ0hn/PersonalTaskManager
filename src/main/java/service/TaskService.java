@@ -24,8 +24,7 @@ public class TaskService {
     }
 
     public List<Task> listAllTasks() {
-
-        return null;
+        return taskRepository.findAll();
     }
     /*TODO
     public Task getTaskById(Long id){
