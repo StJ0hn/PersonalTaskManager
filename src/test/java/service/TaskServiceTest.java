@@ -118,4 +118,28 @@ class TaskServiceTest {
         //to ensure delete never be called
         verify(taskRepository, never()).deleteById(id);
     }
+
+
+    @Test
+    void taskUpdate_ShouldBeUpdate(){
+        //Assert
+        Long id = 1L;
+        Task oldTask = new Task(id, "Old task", "Should be update", false, LocalDate.now());
+
+        when(taskRepository.findById(id)).thenReturn(Optional.of(oldTask));
+
+        when(taskRepository.save(any(Task.class))).thenReturn(oldTask);
+
+        //Act
+        Task result =taskService.updateTask(1L, "New task", "New Desc", LocalDate.now());
+
+        //Assert
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(id, result.getId());
+        Assertions.assertEquals("New task", result.getTitle());
+        Assertions.assertEquals("New Desc", result.getDescription());
+
+        //save method has been called?
+        verify(taskRepository, times(1)).save(any(Task.class));
+    }
 }

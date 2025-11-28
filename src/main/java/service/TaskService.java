@@ -17,9 +17,7 @@ public class TaskService {
     }
 
     public Task createTask(String title, String description, LocalDate dueDate) {
-        if (title == null || title.isEmpty()){
-            throw new InvalidTaskDataException("The title is empty.");
-        }
+        validateTitle(title);
         Task taskNew = new Task(title, description, dueDate);
         return taskRepository.save(taskNew);
     }
@@ -39,7 +37,17 @@ public class TaskService {
     }
 
     public Task updateTask (Long id, String title, String description, LocalDate dueDate){
-        return null;
+        Task taskToUpdate = getTaskById(id);
+        validateTitle(title);
+        taskToUpdate.setTitle(title);
+        taskToUpdate.setDescription(description);
+        taskToUpdate.setDueDate(dueDate);
+        return taskRepository.save(taskToUpdate);
     }
 
+    public void validateTitle(String title){
+        if (title == null || title.trim().isEmpty()){
+            throw new InvalidTaskDataException("The title is empty.");
+        }
+    }
 }
