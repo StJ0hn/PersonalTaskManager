@@ -45,6 +45,12 @@ public class TaskService {
         return taskRepository.save(taskToUpdate);
     }
 
+    public void completeTask(Long id){
+        Task taskChangeToCompleted = getTaskById(id);
+        taskChangeToCompleted.setCompleted(true);
+        taskRepository.save(taskChangeToCompleted);
+    }
+
     public void validateTitle(String title){
         if (title == null || title.trim().isEmpty()){
             throw new InvalidTaskDataException("The title is empty.");

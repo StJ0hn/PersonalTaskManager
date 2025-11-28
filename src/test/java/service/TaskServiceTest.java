@@ -142,4 +142,20 @@ class TaskServiceTest {
         //save method has been called?
         verify(taskRepository, times(1)).save(any(Task.class));
     }
+
+    @Test
+    void taskCompleteTask_ShouldBeMarkComplete(){
+        //Assert
+        Long id = 1L;
+        Task task = new Task(id, "Finish service", "too close", false, LocalDate.now());
+        when(taskRepository.findById(id)).thenReturn(Optional.of(task));
+
+        //Act
+        taskService.completeTask(id);
+
+        //Assertion
+        Assertions.assertTrue(task.isCompleted(), "task should be marked with completed");
+
+        verify(taskRepository, times(1)).save(task);
+    }
 }
