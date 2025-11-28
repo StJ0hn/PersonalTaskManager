@@ -1,7 +1,9 @@
 package service;
 
 import exception.InvalidTaskDataException;
+import exception.TaskNotFoundException;
 import model.Task;
+import net.bytebuddy.asm.Advice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +15,7 @@ import repository.TaskRepository;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -35,6 +38,7 @@ class TaskServiceTest {
         });
     }
 
+    //REFACTOR
     @Test
     void testCreateTask_shouldCreateTaskSuccessfully() {
         // 1. PREPARAR (Arrange)
@@ -57,7 +61,7 @@ class TaskServiceTest {
         Assertions.assertFalse(createdTask.isCompleted(), "the new task should be born incomplete(RN02)");
     }
 
-    //TODO green test
+    //REFACTOR
     @Test
     void testListAllTasks_shouldbeListAllTasksSucefully(){
         //Arrange
@@ -84,5 +88,74 @@ class TaskServiceTest {
         //extra verify of comportament
         // to ensure service call repository one time
         verify(taskRepository, times(1)).findAll();
+    }
+
+    //Good path
+    @Test
+    void testDeleteTaskById_shouldBeDeleteTaskById(){
+        //Arrange
+        Long id = 1L;
+        Task task = new Task(id,"Delete", "Desc", false, LocalDate.now());
+
+        // simulate task exists in database
+        when(taskRepository.findById(id)).thenReturn(Optional.of(task));
+
+        //Act
+        taskService.deleteById(id);
+
+        //Assert
+        verify(taskRepository,times(1)).deleteById(id);
+    }
+
+    //bad path
+    @Test
+    void testDeleteTaskById_ShouldThrowException_WhenIdDoesNotExist(){
+        //Arrange
+        Long id = 99L;
+        when(taskRepository.findById(id)).thenReturn(Optional.empty());
+        //Act & Assert
+        Assertions.assertThrows(TaskNotFoundException.class, () -> {taskService.deleteById(id);});
+        //to ensure delete never be called
+        verify(taskRepository, never()).deleteById(id);
+    }
+
+
+    @Test
+    void taskUpdate_ShouldBeUpdate(){
+        //Assert
+        Long id = 1L;
+        Task oldTask = new Task(id, "Old task", "Should be update", false, LocalDate.now());
+
+        when(taskRepository.findById(id)).thenReturn(Optional.of(oldTask));
+
+        when(taskRepository.save(any(Task.class))).thenReturn(oldTask);
+
+        //Act
+        Task result =taskService.updateTask(1L, "New task", "New Desc", LocalDate.now());
+
+        //Assert
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(id, result.getId());
+        Assertions.assertEquals("New task", result.getTitle());
+        Assertions.assertEquals("New Desc", result.getDescription());
+
+        //save method has been called?
+        verify(taskRepository, times(1)).save(any(Task.class));
+    }
+
+    @Test
+    void taskCompleteTask_ShouldBeMarkComplete(){
+        //Assert
+        Long id = 1L;
+        Task task = new Task(id, "Finish service", "too close", false, LocalDate.now());
+        when(taskRepository.findById(id)).thenReturn(Optional.of(task));
+
+        //Act
+        taskService.completeTask(id);
+
+        //Assertion
+        Assertions.assertTrue(task.isCompleted(), "task should be marked with completed");
+
+        verify(taskRepository, times(1)).save(task);
     }
 }
