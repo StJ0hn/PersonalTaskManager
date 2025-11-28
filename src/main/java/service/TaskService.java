@@ -4,6 +4,8 @@ import exception.InvalidTaskDataException;
 import model.Task;
 import repository.TaskRepository;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TaskService {
 
@@ -20,5 +22,15 @@ public class TaskService {
         Task taskNew = new Task(title, description, dueDate);
         return taskRepository.save(taskNew);
     }
+
+    public List<Task> listAllTasks() {
+
+        return null;
+    }
+    /*TODO
+    public Task getTaskById(Long id){
+        return null;
+    }
+    */
 
 }
