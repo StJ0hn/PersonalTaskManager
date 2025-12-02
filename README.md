@@ -16,7 +16,7 @@ Este projeto é um mapa de aprendizado prático, evoluindo de uma simples aplica
 
 ### **Fase 1: A Fundação (Java Puro e CLI)**
 
-**Status:** [ ] Em andamento
+**Status:** [x] Concluída
 
 #### Arquitetura Alvo:
 
@@ -31,11 +31,11 @@ Este projeto é um mapa de aprendizado prático, evoluindo de uma simples aplica
 * [x] Estruturar o projeto (Gradle/Maven)
 * [x] Criar o Modelo `Task.java`
 * [x] Implementar `TaskRepository` + `InMemoryTaskRepository`
-* [ ] Implementar `TaskService` (TDD)
-* [ ] Implementar `TaskView`
-* [ ] Implementar `TaskController`
-* [ ] Criar classe `Main`
-* [ ] Aplicação CLI funcional (CRUD completo)
+* [x] Implementar `TaskService` (TDD)
+* [x] Implementar `TaskView`
+* [x] Implementar `TaskController`
+* [x] Criar classe `Main`
+* [x] Aplicação CLI funcional (CRUD completo)
 
 ---
 
