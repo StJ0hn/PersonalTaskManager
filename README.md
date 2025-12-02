@@ -30,7 +30,7 @@ Este projeto é um mapa de aprendizado prático, evoluindo de uma simples aplica
 
 * [x] Estruturar o projeto (Gradle/Maven)
 * [x] Criar o Modelo `Task.java`
-* [ ] Implementar `TaskRepository` + `InMemoryTaskRepository`
+* [x] Implementar `TaskRepository` + `InMemoryTaskRepository`
 * [ ] Implementar `TaskService` (TDD)
 * [ ] Implementar `TaskView`
 * [ ] Implementar `TaskController`
@@ -132,7 +132,7 @@ The project evolves from a console-based application to a full‑stack system.
 
 * [x] Project structure
 * [x] `Task.java` model
-* [ ] In-memory repository
+* [x] In-memory repository
 * [ ] Business logic (TDD)
 * [ ] Console view
 * [ ] Controller
