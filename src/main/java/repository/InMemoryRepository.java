@@ -7,29 +7,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class InMemoryRepository implements TaskRepository{
-    private HashMap<Long, Task> database;
-    private AtomicLong idCounter; //Using atomic long to avoid duplicates in database in specific case. Its to future modifies...
+    private final HashMap<Long, Task> database = new HashMap<>();
+    private long idCounter= 1;
 
     @Override
     public Task save(Task task) {
         if (task.getId() == null){
-            Task taskNew = new Task(idCounter.getAndIncrement(), task.getTitle(), task.getDescription(), task.isCompleted(), task.getDueDate());
-            database.put(taskNew.getId(),taskNew);
-            return taskNew;
+            Task newTask = new Task(idCounter++, task.getTitle(), task.getDescription(), task.isCompleted(), task.getDueDate());
+            database.put(newTask.getId(),newTask);
+            return newTask;
         }
         if (database.containsKey(task.getId())) {
             database.put(task.getId(), task);
             return task;
         }
-        throw new TaskNotFoundException("Não foi possível atualizar. Tarefa com ID " + task.getId() + " não encontrada.");
+        throw new TaskNotFoundException("It was not possible to update. Task with ID " + task.getId() + " not found.");
     }
     @Override
     public List<Task> findAll(){
-        List<Task> allTasks = new ArrayList<>(database.values());
-        return allTasks;
+        return new ArrayList<>(database.values());
     }
     @Override
     public Optional<Task> findById(Long id){

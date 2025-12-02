@@ -10,7 +10,6 @@ public class Task {
     private boolean isCompleted;
     private LocalDate dueDate;
 
-    //Construtor padrão usado pelo TaskService para criação de novas tarefas
     public Task(String title, String description, LocalDate dueDate) {
         setTitle(title);
         setDescription(description);
@@ -18,7 +17,6 @@ public class Task {
         setDueDate(dueDate);
     }
 
-    //Construtor de recuperação usado pelo TaskRepository ou pelo spring pra recriar objeto a partir de banco de dados/memória
     public Task(Long id, String title, String description, boolean isCompleted, LocalDate dueDate) {
         this.id = id;
         this.title = title;

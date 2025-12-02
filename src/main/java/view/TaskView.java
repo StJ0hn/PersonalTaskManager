@@ -12,14 +12,14 @@ public class TaskView {
 
     public int showMenu(){
         System.out.println("\n-----PERSONAL TASK MANAGER-----");
-        System.out.println("     1. CREATE TASK" +
-                           "     2. LIST ALL TASKS" +
-                           "     3. LIST TASK BY ID" +
-                           "     4. UPDATE TASK" +
-                           "     5. UPDATE STATUS OF A EXISTENT TASK" +
-                           "     6. DELETE TASK" +
-                           "     0. EXIT OF PROGRAM");
-        System.out.println("     INSERT YOUR OPTION:");
+        System.out.println("\n     1. CREATE TASK" +
+                           "\n     2. LIST ALL TASKS" +
+                           "\n     3. LIST TASK BY ID" +
+                           "\n     4. UPDATE TASK" +
+                           "\n     5. UPDATE STATUS OF A EXISTENT TASK" +
+                           "\n     6. DELETE TASK" +
+                           "\n     0. EXIT OF PROGRAM");
+        System.out.println("\n     INSERT YOUR OPTION:");
         try {
             String input = scanner.nextLine();
             return Integer.parseInt(input);
