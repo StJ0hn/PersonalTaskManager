@@ -118,7 +118,7 @@ The project evolves from a console-based application to a full‑stack system.
 
 ### **Phase 1: The Foundation (Pure Java & CLI)**
 
-**Status:** [ ] In Progress
+**Status:** [x] Finished
 
 #### Target Architecture:
 
@@ -133,11 +133,11 @@ The project evolves from a console-based application to a full‑stack system.
 * [x] Project structure
 * [x] `Task.java` model
 * [x] In-memory repository
-* [ ] Business logic (TDD)
-* [ ] Console view
-* [ ] Controller
-* [ ] Main class
-* [ ] Full CLI CRUD
+* [x] Business logic (TDD)
+* [x] Console view
+* [x] Controller
+* [x] Main class
+* [x] Full CLI CRUD
 
 ---
 
